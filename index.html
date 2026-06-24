@@ -66,6 +66,75 @@
       </a>
     </div>
 
+    <section class="section request-router-section">
+      <div class="container section-head">
+        <div>
+          <span class="eyebrow">Request Router</span>
+          <h2>Build a clearer plumbing request before you contact a provider.</h2>
+        </div>
+        <div><p>Select the issue, urgency, and visible symptoms. The preview helps you explain the situation clearly and decide what to verify before hiring an independent provider.</p><div class="accent-line"></div></div>
+      </div>
+      <div class="container request-router" data-request-router>
+        <div class="router-controls" data-reveal="left">
+          <div class="router-group">
+            <h3>Issue type</h3>
+            <div class="router-options" data-router-options="issue">
+              <button type="button" class="router-option is-active" data-issue="leak">Active leak</button>
+              <button type="button" class="router-option" data-issue="drain">Clogged drain</button>
+              <button type="button" class="router-option" data-issue="water-heater">No hot water</button>
+              <button type="button" class="router-option" data-issue="sewer">Sewer concern</button>
+              <button type="button" class="router-option" data-issue="fixture">Fixture install</button>
+              <button type="button" class="router-option" data-issue="commercial">Commercial issue</button>
+            </div>
+          </div>
+          <div class="router-group">
+            <h3>Timing</h3>
+            <div class="urgency-control" role="radiogroup" aria-label="Request urgency">
+              <label><input type="radio" name="router-urgency" value="routine"><span>Planned</span></label>
+              <label><input type="radio" name="router-urgency" value="today" checked><span>Today</span></label>
+              <label><input type="radio" name="router-urgency" value="emergency"><span>Urgent</span></label>
+            </div>
+          </div>
+          <div class="router-group">
+            <h3>Visible signs</h3>
+            <div class="symptom-grid">
+              <label><input type="checkbox" value="Water is actively leaking"><span>Active water</span></label>
+              <label><input type="checkbox" value="More than one fixture is affected"><span>Multiple fixtures</span></label>
+              <label><input type="checkbox" value="Odor, staining, or damp materials are present"><span>Odor or stains</span></label>
+              <label><input type="checkbox" value="The issue has happened before"><span>Recurring issue</span></label>
+            </div>
+          </div>
+        </div>
+
+        <aside class="router-preview" data-reveal="right">
+          <div class="urgency-meter" data-urgency-level="today">
+            <span class="meter-label">Urgency</span>
+            <strong data-router-urgency-label>Same-day request</strong>
+            <div class="meter-track" aria-hidden="true"><span></span></div>
+          </div>
+          <div class="preview-card">
+            <span class="eyebrow">Request Preview</span>
+            <h3 data-router-title>Active leak support</h3>
+            <p data-router-summary>Ask for provider follow-up for visible leaking, shutoff review, source tracing, and repair planning.</p>
+            <ul data-router-details>
+              <li>Affected area and visible water source</li>
+              <li>Whether the shutoff valve is accessible</li>
+              <li>Photos of the leak, stains, or damaged materials</li>
+            </ul>
+            <a class="btn" href="contact.html" data-router-submit>Use This Request</a>
+          </div>
+          <div class="verification-card">
+            <h3>Before approving work</h3>
+            <ul>
+              <li><i data-lucide="badge-check"></i><span>Confirm license and insurance for the work type.</span></li>
+              <li><i data-lucide="file-text"></i><span>Ask for written scope, estimate, and timing.</span></li>
+              <li><i data-lucide="shield-check"></i><span>Review cleanup, access needs, and warranty terms.</span></li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </section>
+
     <section class="section">
       <div class="container about-grid">
         <div class="image-frame" data-reveal="left"><img src="assets/images/about-team.webp" alt="Two plumbers inspecting a utility room pipe system"></div>
@@ -163,6 +232,46 @@
             <li><i data-lucide="handshake"></i><span>No obligation to book through the first provider who responds.</span></li>
           </ul>
         </aside>
+      </div>
+    </section>
+
+    <section class="section faq-section">
+      <div class="container section-head">
+        <div>
+          <span class="eyebrow">Questions Before You Request</span>
+          <h2>Clear answers for homeowners using a provider matching service.</h2>
+        </div>
+        <div><p>These answers explain how the connection works, what remains your choice, and what to confirm before approving plumbing work.</p><div class="accent-line"></div></div>
+      </div>
+      <div class="container faq-grid">
+        <div class="faq-column">
+          <details class="faq-item" data-reveal>
+            <summary>Does FlowCore Plumbing perform the plumbing work?</summary>
+            <div class="faq-answer"><p>No. FlowCore Plumbing is a free matching service. We help organize your request and connect you with independent local providers who may be able to follow up.</p></div>
+          </details>
+          <details class="faq-item" data-reveal>
+            <summary>Do I have to hire the first provider who contacts me?</summary>
+            <div class="faq-answer"><p>No. You choose whether to hire any provider. Review the provider details, scope, estimate, license, insurance, and timing before approving work.</p></div>
+          </details>
+          <details class="faq-item" data-reveal>
+            <summary>Are the starting ranges guaranteed prices?</summary>
+            <div class="faq-answer"><p>No. Starting ranges are general examples. Final pricing depends on access, timing, parts, property conditions, and the final scope you approve with the provider.</p></div>
+          </details>
+        </div>
+        <div class="faq-column">
+          <details class="faq-item" data-reveal>
+            <summary>What details should I share in a request?</summary>
+            <div class="faq-answer"><p>Share the affected fixture or area, visible symptoms, when the issue started, whether water is actively leaking or backing up, and the best way to reach you.</p></div>
+          </details>
+          <details class="faq-item" data-reveal>
+            <summary>Can I request urgent plumbing help?</summary>
+            <div class="faq-answer"><p>Yes. Use the priority line for active leaks, backups, no hot water, sewer odors, or fixture failures. Provider availability can vary by location and schedule.</p></div>
+          </details>
+          <details class="faq-item" data-reveal>
+            <summary>Will my request details be shared?</summary>
+            <div class="faq-answer"><p>Request details may be shared with independent providers or communication tools when needed to respond to your inquiry. Review the privacy policy for more information.</p></div>
+          </details>
+        </div>
       </div>
     </section>
   </main>
