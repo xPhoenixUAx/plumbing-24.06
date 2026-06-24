@@ -484,8 +484,24 @@ header {
   padding: clamp(22px, 3vw, 30px);
   box-shadow: 0 16px 44px rgba(17, 24, 39, 0.08);
 }
-.router-group h3 {
+.router-group h3,
+.router-group summary {
   margin-bottom: 16px;
+}
+.router-group summary {
+  color: var(--ink);
+  cursor: pointer;
+  list-style: none;
+  font-family: Montserrat, "Open Sans", Arial, sans-serif;
+  font-size: clamp(1.25rem, 2vw, 1.65rem);
+  font-weight: 900;
+  line-height: 1.08;
+  position: relative;
+}
+.router-group summary::-webkit-details-marker { display: none; }
+.router-group summary::after {
+  content: "";
+  display: none;
 }
 .router-options {
   display: grid;
@@ -721,6 +737,9 @@ header {
 }
 .service-card:hover .service-card-body { transform: translateY(-8px); }
 .service-card h3 { color: var(--blue); margin-bottom: 12px; }
+.swipe-hint {
+  display: none;
+}
 .text-link {
   display: inline-flex;
   align-items: center;
@@ -1405,15 +1424,57 @@ textarea { min-height: 150px; resize: vertical; }
 }
 
 @media (max-width: 640px) {
-  :root { --container: min(100% - 28px, 1440px); --content: min(100% - 28px, 1260px); }
+  :root { --container: min(100% - 24px, 1440px); --content: min(100% - 24px, 1260px); }
   body { font-size: 15px; }
-  .topbar-inner { min-height: 60px; }
+  h1 { font-size: clamp(2.25rem, 12vw, 3.65rem); }
+  h2 { font-size: clamp(1.75rem, 8vw, 2.55rem); }
+  .section { padding: 58px 0; }
+  .section-head {
+    gap: 18px;
+    margin-bottom: 32px;
+  }
+  .eyebrow {
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+  }
+  .topbar-inner {
+    min-height: 58px;
+    gap: 8px;
+  }
   .brand-mark { width: 40px; height: 40px; }
-  .brand-name { font-size: 1.35rem; }
+  .brand {
+    gap: 9px;
+  }
+  .brand-name { font-size: clamp(1.05rem, 5vw, 1.35rem); }
   .brand-tagline { display: none; }
-  .topbar .btn { padding: 0 14px; min-height: 42px; font-size: 0.9rem; }
+  .topbar .btn {
+    padding: 0 10px;
+    min-height: 38px;
+    font-size: 0.8rem;
+    white-space: nowrap;
+  }
+  .nav-inner {
+    gap: 10px;
+    min-height: 52px;
+  }
+  .menu-toggle {
+    width: 40px;
+    height: 40px;
+  }
+  .site-nav {
+    inset: 110px 0 auto 0;
+    padding: 14px 18px;
+  }
+  .search-box {
+    min-height: 38px;
+  }
+  .search-suggestions {
+    width: calc(100vw - 24px);
+    right: 0;
+    max-height: min(360px, 70vh);
+  }
   .hero {
-    min-height: 690px;
+    min-height: 620px;
     align-items: start;
   }
   .image-cta[data-parallax-section] img {
@@ -1423,28 +1484,163 @@ textarea { min-height: 150px; resize: vertical; }
   .hero::before, .page-hero::before, .image-cta::before {
     background: linear-gradient(90deg, rgba(4, 18, 25, 0.84), rgba(7, 44, 60, 0.62));
   }
-  .hero-content { padding-top: 86px; }
+  .hero-content {
+    padding-top: 64px;
+    padding-bottom: 130px;
+  }
   .hero-content h1 { min-height: 3.24em; }
+  .hero-content p {
+    font-size: 1rem;
+    margin-top: 18px;
+  }
+  .hero-actions {
+    gap: 12px;
+    margin-top: 26px;
+  }
   .hero-actions .btn { width: 100%; }
   .hero-service-strip, .services-grid, .estimate-grid, .process-grid, .stats, .field-grid {
     grid-template-columns: 1fr;
   }
+  .services-grid {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(282px, 84vw);
+    grid-template-columns: none;
+    gap: 16px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    overscroll-behavior-inline: contain;
+    scroll-snap-type: inline mandatory;
+    scroll-padding-inline: 12px;
+    padding: 4px 12px 22px;
+    margin-left: -12px;
+    margin-right: -12px;
+    -webkit-overflow-scrolling: touch;
+  }
+  .services-grid::after {
+    content: "";
+    width: 1px;
+  }
+  .services-grid::-webkit-scrollbar {
+    height: 6px;
+  }
+  .services-grid::-webkit-scrollbar-track {
+    background: var(--sky-soft);
+    border-radius: 999px;
+  }
+  .services-grid::-webkit-scrollbar-thumb {
+    background: var(--orange);
+    border-radius: 999px;
+  }
+  .service-card {
+    scroll-snap-align: start;
+  }
+  .services-grid + .swipe-hint {
+    display: block;
+    margin-top: 8px;
+    color: var(--muted);
+    font-size: 0.82rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .hero-service-strip {
+    margin-top: -72px;
+    gap: 14px;
+  }
   .router-options, .urgency-control, .symptom-grid { grid-template-columns: 1fr; }
   .search-results { grid-template-columns: 1fr; }
   .faq-grid { grid-template-columns: 1fr; }
-  .service-mini { padding: 24px; }
+  .request-router-section {
+    padding-top: 62px;
+  }
+  .router-group,
+  .urgency-meter,
+  .preview-card,
+  .verification-card,
+  .form-card,
+  .sidebar-card,
+  .control-panel {
+    padding: 22px;
+  }
+  .router-controls,
+  .router-preview {
+    gap: 14px;
+  }
+  .router-dropdown {
+    padding: 0;
+    overflow: hidden;
+  }
+  .router-dropdown summary {
+    min-height: 58px;
+    margin: 0;
+    padding: 18px 54px 18px 22px;
+    display: flex;
+    align-items: center;
+  }
+  .router-dropdown summary::after {
+    content: "+";
+    display: block;
+    position: absolute;
+    right: 22px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--orange);
+    font-size: 1.45rem;
+    line-height: 1;
+  }
+  .router-dropdown[open] summary::after {
+    content: "-";
+  }
+  .router-dropdown .router-options,
+  .router-dropdown .urgency-control,
+  .router-dropdown .symptom-grid {
+    padding: 0 22px 22px;
+  }
+  .service-mini {
+    min-height: 150px;
+    padding: 22px;
+  }
   .service-mini::before {
-    width: 112px;
-    height: 112px;
+    width: 104px;
+    height: 104px;
     right: 12px;
     bottom: 10px;
   }
   .service-mini span { max-width: 100%; }
+  .service-card img {
+    height: 220px;
+  }
+  .service-card-body {
+    width: calc(100% - 24px);
+    padding: 22px;
+    min-height: 170px;
+  }
   .check-grid { grid-template-columns: 1fr; }
   .stat { border-left: 0; border-top: 1px dashed #cfdde4; }
   .stat:first-child { border-top: 0; }
-  .page-hero-inner { display: grid; align-content: center; }
+  .page-hero {
+    min-height: 310px;
+  }
+  .page-hero-inner {
+    display: grid;
+    align-content: center;
+    gap: 16px;
+  }
   .breadcrumb { width: max-content; max-width: 100%; }
+  .image-frame {
+    min-height: 300px;
+  }
+  .estimate-row {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+  .faq-item summary {
+    padding: 18px 48px 18px 18px;
+  }
+  .faq-answer p {
+    padding: 0 18px 18px;
+  }
   .footer-cta {
     padding: 26px 0;
   }
@@ -1471,5 +1667,22 @@ textarea { min-height: 150px; resize: vertical; }
   }
   .footer-disclaimer {
     padding-bottom: 22px;
+  }
+}
+
+@media (max-width: 380px) {
+  .topbar .btn {
+    padding: 0 8px;
+    font-size: 0.72rem;
+  }
+  .brand-mark {
+    width: 36px;
+    height: 36px;
+  }
+  .brand-name {
+    font-size: 1rem;
+  }
+  .hero {
+    min-height: 590px;
   }
 }

@@ -77,8 +77,8 @@
       </div>
       <div class="container request-router" data-request-router>
         <div class="router-controls" data-reveal="left">
-          <div class="router-group">
-            <h3>Issue type</h3>
+          <details class="router-group router-dropdown" open>
+            <summary>Issue type</summary>
             <div class="router-options" data-router-options="issue">
               <button type="button" class="router-option is-active" data-issue="leak">Active leak</button>
               <button type="button" class="router-option" data-issue="drain">Clogged drain</button>
@@ -87,24 +87,24 @@
               <button type="button" class="router-option" data-issue="fixture">Fixture install</button>
               <button type="button" class="router-option" data-issue="commercial">Commercial issue</button>
             </div>
-          </div>
-          <div class="router-group">
-            <h3>Timing</h3>
+          </details>
+          <details class="router-group router-dropdown" open>
+            <summary>Timing</summary>
             <div class="urgency-control" role="radiogroup" aria-label="Request urgency">
               <label><input type="radio" name="router-urgency" value="routine"><span>Planned</span></label>
               <label><input type="radio" name="router-urgency" value="today" checked><span>Today</span></label>
               <label><input type="radio" name="router-urgency" value="emergency"><span>Urgent</span></label>
             </div>
-          </div>
-          <div class="router-group">
-            <h3>Visible signs</h3>
+          </details>
+          <details class="router-group router-dropdown" open>
+            <summary>Visible signs</summary>
             <div class="symptom-grid">
               <label><input type="checkbox" value="Water is actively leaking"><span>Active water</span></label>
               <label><input type="checkbox" value="More than one fixture is affected"><span>Multiple fixtures</span></label>
               <label><input type="checkbox" value="Odor, staining, or damp materials are present"><span>Odor or stains</span></label>
               <label><input type="checkbox" value="The issue has happened before"><span>Recurring issue</span></label>
             </div>
-          </div>
+          </details>
         </div>
 
         <aside class="router-preview" data-reveal="right">
@@ -180,6 +180,7 @@
         <article class="service-card" data-reveal><img src="assets/images/sewer-repair.webp" alt="Plumber using sewer inspection camera near exterior cleanout"><div class="service-card-body"><h3>Sewer Line Repair</h3><p>Request matching for camera inspection, cleanout access, and repair planning.</p><a class="text-link" href="services/sewer-line-repair.html">Learn More</a></div></article>
         <article class="service-card" data-reveal><img src="assets/images/fixture-installation.webp" alt="Plumber installing bathroom fixtures"><div class="service-card-body"><h3>Fixture Installation</h3><p>Request matching for toilets, faucets, valves, disposals, and finish plumbing.</p><a class="text-link" href="services/fixture-installation.html">Learn More</a></div></article>
       </div>
+      <p class="container swipe-hint">Swipe to browse service cards</p>
     </section>
 
     <section class="image-cta emergency-cta" data-parallax-section>

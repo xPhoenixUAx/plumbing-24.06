@@ -646,6 +646,32 @@
     updateRouter();
   }
 
+  function initRouterDropdowns() {
+    const dropdowns = Array.from(document.querySelectorAll(".router-dropdown"));
+    if (!dropdowns.length) return;
+    const mobileQuery = window.matchMedia("(max-width: 640px)");
+
+    function syncDropdowns() {
+      dropdowns.forEach((dropdown, index) => {
+        if (mobileQuery.matches) {
+          dropdown.removeAttribute("open");
+        } else {
+          dropdown.setAttribute("open", "");
+        }
+      });
+    }
+
+    dropdowns.forEach((dropdown) => {
+      const summary = dropdown.querySelector("summary");
+      if (!summary) return;
+      summary.addEventListener("click", (event) => {
+        if (!mobileQuery.matches) event.preventDefault();
+      });
+    });
+    syncDropdowns();
+    mobileQuery.addEventListener("change", syncDropdowns);
+  }
+
   function initRouterContactFill() {
     const form = document.querySelector("form[data-contact-form]");
     if (!form) return;
@@ -793,6 +819,7 @@
     initSearch();
     initSearchPage();
     initRequestRouter();
+    initRouterDropdowns();
     initRouterContactFill();
     initFaq();
     initPageTransitions();
