@@ -161,9 +161,9 @@ header {
   min-height: 76px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 1fr auto auto auto;
+  grid-template-columns: minmax(0, 1fr) auto auto auto;
   align-items: center;
-  gap: 34px;
+  gap: clamp(14px, 2.2vw, 34px);
 }
 .brand {
   display: inline-flex;
@@ -186,7 +186,7 @@ header {
   color: var(--blue);
   font-weight: 900;
   font-family: Montserrat, sans-serif;
-  font-size: clamp(1.5rem, 2vw, 2rem);
+  font-size: clamp(1.25rem, 1.8vw, 2rem);
   line-height: 1;
 }
 .brand-tagline {
@@ -202,12 +202,23 @@ header {
   display: flex;
   align-items: center;
   gap: 12px;
-  padding-left: 28px;
+  min-width: 0;
+  padding-left: clamp(14px, 1.8vw, 28px);
   border-left: 1px solid var(--line);
 }
-.quick-contact i { color: var(--orange); width: 30px; height: 30px; }
+.quick-contact > span {
+  min-width: 0;
+}
+.quick-contact i { color: var(--orange); width: clamp(24px, 2vw, 30px); height: clamp(24px, 2vw, 30px); }
 .quick-label { display: block; color: var(--ink); font-size: 0.8rem; line-height: 1.2; }
-.quick-value { display: block; color: var(--ink); font-weight: 900; line-height: 1.2; }
+.quick-value {
+  display: block;
+  color: var(--ink);
+  font-weight: 900;
+  line-height: 1.2;
+  font-size: clamp(0.82rem, 1.15vw, 1rem);
+  white-space: nowrap;
+}
 .nav-row { background: var(--sky); }
 .nav-inner {
   width: var(--container);
@@ -1310,6 +1321,40 @@ textarea { min-height: 150px; resize: vertical; }
 [data-reveal].is-visible {
   opacity: 1;
   transform: translate(0, 0);
+}
+
+@media (max-width: 1180px) {
+  .topbar-inner {
+    gap: 12px;
+  }
+  .brand-mark {
+    width: 44px;
+    height: 44px;
+    border-width: 3px;
+    flex: 0 0 auto;
+  }
+  .brand-name {
+    font-size: clamp(1.12rem, 1.7vw, 1.5rem);
+  }
+  .brand-tagline {
+    font-size: 0.6rem;
+    letter-spacing: 0.05em;
+  }
+  .quick-contact {
+    gap: 8px;
+    padding-left: 12px;
+  }
+  .quick-label {
+    font-size: 0.72rem;
+  }
+  .quick-value {
+    font-size: 0.82rem;
+  }
+  .topbar .btn {
+    min-height: 42px;
+    padding: 0 16px;
+    white-space: nowrap;
+  }
 }
 
 @media (max-width: 980px) {
