@@ -1066,25 +1066,32 @@ header {
 .form-card {
   background: #fff;
   box-shadow: var(--shadow);
-  padding: clamp(26px, 4vw, 44px);
+  padding: clamp(24px, 3.4vw, 34px);
   border-radius: var(--radius);
+  border-bottom: 7px solid var(--orange);
+  align-self: start;
+  position: sticky;
+  top: 154px;
 }
 .field-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
+  gap: 14px;
 }
-.field { display: grid; gap: 8px; margin-bottom: 16px; }
+.field { display: grid; gap: 8px; margin-bottom: 14px; }
 label { font-weight: 900; }
 input, textarea, select {
   width: 100%;
   border: 1px solid #dce6ea;
   border-radius: 4px;
-  padding: 12px 14px;
-  min-height: 48px;
+  padding: 10px 14px;
+  min-height: 42px;
   background: #fff;
 }
-textarea { min-height: 150px; resize: vertical; }
+textarea { min-height: 122px; resize: vertical; }
+.form-card .btn {
+  margin-top: 2px;
+}
 .success-message {
   margin-top: 16px;
   color: var(--blue);
@@ -1513,6 +1520,9 @@ textarea { min-height: 150px; resize: vertical; }
     margin-top: 12px;
     font-size: 0.92rem;
   }
+  .form-card {
+    top: 134px;
+  }
   .process-grid {
     gap: 16px;
   }
@@ -1603,6 +1613,9 @@ textarea { min-height: 150px; resize: vertical; }
   }
   .section-head, .content-grid, .contact-grid, .image-cta .container {
     grid-template-columns: 1fr;
+  }
+  .form-card {
+    position: static;
   }
   .about-grid {
     grid-template-columns: minmax(220px, 0.72fr) minmax(0, 1fr);

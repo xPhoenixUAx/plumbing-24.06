@@ -10,7 +10,7 @@
     pageLoader.setAttribute("aria-live", "polite");
     pageLoader.setAttribute("aria-label", "Loading page");
     pageLoader.innerHTML =
-      '<div class="loader-brand" aria-hidden="true"><span class="brand-mark loader-brand-mark"><svg viewBox="0 0 24 24" focusable="false"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.8-3.8a6 6 0 0 1-7.9 7.9l-6.9 6.9a2.1 2.1 0 0 1-3-3l6.9-6.9a6 6 0 0 1 7.9-7.9l-3.8 3.8Z"></path></svg></span><span><span class="brand-name">FlowCore Plumbing</span><span class="brand-tagline">Plumbing - Provider Matching</span></span></div>';
+      '<div class="loader-brand" aria-hidden="true"><span class="brand-mark loader-brand-mark"><svg viewBox="0 0 24 24" focusable="false"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.8-3.8a6 6 0 0 1-7.9 7.9l-6.9 6.9a2.1 2.1 0 0 1-3-3l6.9-6.9a6 6 0 0 1 7.9-7.9l-3.8 3.8Z"></path></svg></span><span><span class="brand-name" data-company>FlowCore Plumbing</span><span class="brand-tagline" data-brand-tagline>Plumbing - Provider Matching</span></span></div>';
     document.body.appendChild(pageLoader);
     root.classList.add("page-is-loading");
     return pageLoader;
@@ -60,6 +60,25 @@
     });
   }
 
+  function replaceFallbackBrandName() {
+    if (!config.companyName || config.companyName === "FlowCore Plumbing") return;
+    const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
+      acceptNode(node) {
+        const parent = node.parentElement;
+        if (!parent || ["SCRIPT", "STYLE"].includes(parent.tagName)) return NodeFilter.FILTER_REJECT;
+        return node.nodeValue.includes("FlowCore Plumbing") ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_SKIP;
+      }
+    });
+    const textNodes = [];
+    while (walker.nextNode()) textNodes.push(walker.currentNode);
+    textNodes.forEach((node) => {
+      node.nodeValue = node.nodeValue.replace(/FlowCore Plumbing/g, config.companyName);
+    });
+    document.querySelectorAll("[aria-label]").forEach((node) => {
+      node.setAttribute("aria-label", node.getAttribute("aria-label").replace(/FlowCore Plumbing/g, config.companyName));
+    });
+  }
+
   function applyConfig() {
     if (config.companyName) {
       document.title = document.title.replace(/FlowCore Plumbing/g, config.companyName);
@@ -85,6 +104,7 @@
     document.querySelectorAll("[data-website-link]").forEach((node) => {
       node.href = `https://${config.website}`;
     });
+    replaceFallbackBrandName();
   }
 
   function initMenu() {
@@ -264,6 +284,13 @@
 
   const searchIndex = [
       {
+        title: "Home",
+        type: "Page",
+        url: "index.html",
+        description: "Start a plumbing provider matching request and review common service categories.",
+        terms: ["home", "start", "provider", "match", "plumbing", "request"]
+      },
+      {
         title: "Residential Plumbing",
         type: "Service",
         url: "services/residential-plumbing.html",
@@ -309,7 +336,7 @@
         title: "How Provider Matching Works",
         type: "About",
         url: "about.html",
-        description: "Learn how FlowCore Plumbing helps organize requests and connect homeowners with independent providers.",
+        description: `Learn how ${config.companyName || "FlowCore Plumbing"} helps organize requests and connect homeowners with independent providers.`,
         terms: ["about", "company", "who", "provider matching", "independent"]
       },
       {
