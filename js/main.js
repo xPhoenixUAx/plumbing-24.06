@@ -60,6 +60,12 @@
   }
 
   function applyConfig() {
+    if (config.companyName) {
+      document.title = document.title.replace(/FlowCore Plumbing/g, config.companyName);
+      document.querySelectorAll("meta[name='description']").forEach((node) => {
+        node.setAttribute("content", node.getAttribute("content").replace(/FlowCore Plumbing/g, config.companyName));
+      });
+    }
     setText("[data-company]", config.companyName);
     setText("[data-brand-tagline]", config.brandTagline);
     setText("[data-email]", config.email);
