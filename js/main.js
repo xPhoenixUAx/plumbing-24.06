@@ -194,10 +194,40 @@
 
   function initForms() {
     document.querySelectorAll("form[data-contact-form]").forEach((form) => {
-      form.addEventListener("submit", (event) => {
+      form.addEventListener("submit", async (event) => {
         event.preventDefault();
-        showConfirmationModal(form);
-        form.reset();
+        const fallback = form.querySelector(".success-message");
+        const submit = form.querySelector("[type='submit']");
+        const submitText = submit?.textContent || "";
+        if (fallback) fallback.hidden = true;
+        if (submit) {
+          submit.disabled = true;
+          submit.textContent = "Sending...";
+        }
+
+        try {
+          const response = await fetch(form.action, {
+            method: "POST",
+            body: new FormData(form),
+            headers: { Accept: "application/json", "X-Requested-With": "XMLHttpRequest" }
+          });
+          const result = await response.json().catch(() => ({}));
+          if (!response.ok || result.ok !== true) {
+            throw new Error(result.message || "We could not send your request online. Please call or email us directly.");
+          }
+          showConfirmationModal(form);
+          form.reset();
+        } catch (error) {
+          if (fallback) {
+            fallback.textContent = error.message;
+            fallback.hidden = false;
+          }
+        } finally {
+          if (submit) {
+            submit.disabled = false;
+            submit.textContent = submitText;
+          }
+        }
       });
     });
   }

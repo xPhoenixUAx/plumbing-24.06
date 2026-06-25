@@ -1073,6 +1073,13 @@ header {
   position: sticky;
   top: 154px;
 }
+.form-hp {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
 .field-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -1091,6 +1098,10 @@ input, textarea, select {
 textarea { min-height: 122px; resize: vertical; }
 .form-card .btn {
   margin-top: 2px;
+}
+.form-card .btn:disabled {
+  cursor: wait;
+  opacity: 0.72;
 }
 .success-message {
   margin-top: 16px;
