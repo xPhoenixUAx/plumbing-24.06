@@ -2203,6 +2203,9 @@ textarea { min-height: 122px; resize: vertical; }
     min-height: 620px;
     align-items: start;
   }
+  .hero img {
+    object-position: 70% center;
+  }
   .image-cta[data-parallax-section] img {
     height: 108%;
     top: -4%;
