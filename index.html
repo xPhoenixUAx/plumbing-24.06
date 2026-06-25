@@ -78,31 +78,31 @@
       <div class="container request-router" data-request-router>
         <div class="router-controls" data-reveal="left">
           <details class="router-group router-dropdown" open>
-            <summary>Issue type</summary>
+            <summary><span class="router-summary-icon"><i data-lucide="route"></i></span><span>Issue type</span></summary>
             <div class="router-options" data-router-options="issue">
-              <button type="button" class="router-option is-active" data-issue="leak">Active leak</button>
-              <button type="button" class="router-option" data-issue="drain">Clogged drain</button>
-              <button type="button" class="router-option" data-issue="water-heater">No hot water</button>
-              <button type="button" class="router-option" data-issue="sewer">Sewer concern</button>
-              <button type="button" class="router-option" data-issue="fixture">Fixture install</button>
-              <button type="button" class="router-option" data-issue="commercial">Commercial issue</button>
+              <button type="button" class="router-option" data-issue="leak"><i data-lucide="droplet"></i><span>Active leak</span></button>
+              <button type="button" class="router-option" data-issue="drain"><i data-lucide="waves"></i><span>Clogged drain</span></button>
+              <button type="button" class="router-option" data-issue="water-heater"><i data-lucide="thermometer"></i><span>No hot water</span></button>
+              <button type="button" class="router-option is-active" data-issue="sewer"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 5h8v7H5z" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linejoin="round"/><path d="M7 5V3h4v2" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"/><path d="M9 12v4h5" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 16c0-4 2-6 5-6" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"/><path d="M19 10v6h-2" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Sewer concern</span></button>
+              <button type="button" class="router-option" data-issue="fixture"><i data-lucide="wrench"></i><span>Fixture install</span></button>
+              <button type="button" class="router-option" data-issue="commercial"><i data-lucide="building-2"></i><span>Commercial issue</span></button>
             </div>
           </details>
           <details class="router-group router-dropdown" open>
-            <summary>Timing</summary>
+            <summary><span class="router-summary-icon"><i data-lucide="clock"></i></span><span>Timing</span></summary>
             <div class="urgency-control" role="radiogroup" aria-label="Request urgency">
-              <label><input type="radio" name="router-urgency" value="routine"><span>Planned</span></label>
-              <label><input type="radio" name="router-urgency" value="today" checked><span>Today</span></label>
-              <label><input type="radio" name="router-urgency" value="emergency"><span>Urgent</span></label>
+              <label><input type="radio" name="router-urgency" value="routine"><i data-lucide="calendar-days"></i><span>Planned</span></label>
+              <label><input type="radio" name="router-urgency" value="today" checked><i data-lucide="calendar-check"></i><span>Today</span></label>
+              <label><input type="radio" name="router-urgency" value="emergency"><i data-lucide="triangle-alert"></i><span>Urgent</span></label>
             </div>
           </details>
           <details class="router-group router-dropdown" open>
-            <summary>Visible signs</summary>
+            <summary><span class="router-summary-icon"><i data-lucide="eye"></i></span><span>Visible signs</span></summary>
             <div class="symptom-grid">
-              <label><input type="checkbox" value="Water is actively leaking"><span>Active water</span></label>
-              <label><input type="checkbox" value="More than one fixture is affected"><span>Multiple fixtures</span></label>
-              <label><input type="checkbox" value="Odor, staining, or damp materials are present"><span>Odor or stains</span></label>
-              <label><input type="checkbox" value="The issue has happened before"><span>Recurring issue</span></label>
+              <label><input type="checkbox" value="Water is actively leaking"><i data-lucide="droplets"></i><span>Active water</span></label>
+              <label><input type="checkbox" value="More than one fixture is affected"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 5h6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><path d="M12 5v4" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><path d="M7 9h10a3 3 0 0 1 3 3v1h-5v-1a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v1H4v-1a3 3 0 0 1 3-3z" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/><path d="M7 16v3M12 16v4M17 16v3" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg><span>Multiple fixtures</span></label>
+              <label><input type="checkbox" value="Odor, staining, or damp materials are present"><i data-lucide="waves"></i><span>Odor or stains</span></label>
+              <label><input type="checkbox" value="The issue has happened before"><i data-lucide="rotate-cw"></i><span>Recurring issue</span></label>
             </div>
           </details>
         </div>
@@ -112,19 +112,41 @@
             <span class="meter-label">Urgency</span>
             <strong data-router-urgency-label>Same-day request</strong>
             <div class="meter-track" aria-hidden="true"><span></span></div>
+            <span class="meter-icon"><i data-lucide="zap"></i></span>
           </div>
           <div class="preview-card">
+            <span class="router-card-art" aria-hidden="true">
+              <svg viewBox="0 0 256 256" role="img">
+                <circle cx="136" cy="130" r="88" fill="#e7fbf7"/>
+                <g transform="translate(256 0) scale(-1 1)">
+                  <path fill="#9bded8" d="M168 48v64h-24a32 32 0 0 0-32 32v24H48v-24a96 96 0 0 1 96-96Z" opacity=".82"/>
+                  <path fill="#8da0a9" d="M232 104h-24V56h24a8 8 0 0 0 0-16h-26.17A16 16 0 0 0 192 32h-16a16 16 0 0 0-13.83 8H144A104.11 104.11 0 0 0 40 144v18.16A16 16 0 0 0 32 176v16a16 16 0 0 0 8 13.84V232a8 8 0 0 0 16 0v-24h48v24a8 8 0 0 0 16 0v-26.16a16 16 0 0 0 8-13.84v-16a16 16 0 0 0-8-13.84V144a24 24 0 0 1 24-24h18.17a16 16 0 0 0 13.83 8h16a16 16 0 0 0 13.83-8H232a8 8 0 0 0 0-16m-120 72v16H48v-16Zm-8-32v16H56v-16a88.1 88.1 0 0 1 88-88h16v48h-16a40 40 0 0 0-40 40m72-32V48h16v64Z"/>
+                  <path fill="#0f8f89" d="M176 48h16v64h-16zm32 56h24a8 8 0 0 1 0 16h-26.17A16 16 0 0 1 192 128h-16a16 16 0 0 1-13.83-8H144a24 24 0 0 0-24 24v16h-16v-16a40 40 0 0 1 40-40h16V56h-16V40h18.17A16 16 0 0 1 176 32h16a16 16 0 0 1 13.83 8H232a8 8 0 0 1 0 16h-24z"/>
+                </g>
+                <path fill="#b7f5ea" d="M212 36l6 14 14 6-14 6-6 14-6-14-14-6 14-6zM38 158l5 12 12 5-12 5-5 12-5-12-12-5 12-5zM190 220l4 9 9 4-9 4-4 9-4-9-9-4 9-4z"/>
+              </svg>
+            </span>
             <span class="eyebrow">Request Preview</span>
-            <h3 data-router-title>Active leak support</h3>
-            <p data-router-summary>Ask for provider follow-up for visible leaking, shutoff review, source tracing, and repair planning.</p>
+            <h3 data-router-title>Sewer diagnostic request</h3>
+            <p data-router-summary>Flag whole-property symptoms so a provider can discuss cleanout access, camera inspection, and repair planning.</p>
             <ul data-router-details>
-              <li>Affected area and visible water source</li>
-              <li>Whether the shutoff valve is accessible</li>
-              <li>Photos of the leak, stains, or damaged materials</li>
+              <li>Which fixtures are backing up or gurgling</li>
+              <li>Whether sewer odor or yard wet spots are present</li>
+              <li>Location of any accessible cleanout</li>
             </ul>
             <a class="btn" href="contact.html" data-router-submit>Use This Request</a>
           </div>
           <div class="verification-card">
+            <span class="router-card-art verification-art" aria-hidden="true">
+              <svg viewBox="0 0 120 100" role="img">
+                <path d="M31 18h49a7 7 0 0 1 7 7v58a7 7 0 0 1-7 7H31a7 7 0 0 1-7-7V25a7 7 0 0 1 7-7z" fill="#f8fafc" stroke="#78909c" stroke-width="4"/>
+                <path d="M44 12h24a6 6 0 0 1 6 6v6H38v-6a6 6 0 0 1 6-6z" fill="#0f8f89"/>
+                <path d="M39 42l6 6 11-13M39 60l6 6 11-13M39 78l6 6 11-13" fill="none" stroke="#0f8f89" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M64 44h14M64 62h14M64 80h10" fill="none" stroke="#cbd5e1" stroke-width="4" stroke-linecap="round"/>
+                <path d="M91 56l18 6v13c0 12-8 18-18 22-10-4-18-10-18-22V62z" fill="#0f8f89" stroke="#b7f5ea" stroke-width="3"/>
+                <path d="M83 76l6 6 12-15" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
             <h3>Before approving work</h3>
             <ul>
               <li><i data-lucide="badge-check"></i><span>Confirm license and insurance for the work type.</span></li>

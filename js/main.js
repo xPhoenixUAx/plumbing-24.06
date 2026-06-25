@@ -678,7 +678,7 @@
     const issueButtons = Array.from(router.querySelectorAll("[data-issue]"));
 
     function currentIssue() {
-      return router.querySelector("[data-issue].is-active")?.dataset.issue || "leak";
+      return router.querySelector("[data-issue].is-active")?.dataset.issue || "sewer";
     }
 
     function currentUrgency() {
