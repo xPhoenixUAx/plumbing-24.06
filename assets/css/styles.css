@@ -1108,6 +1108,51 @@ textarea { min-height: 122px; resize: vertical; }
   color: var(--blue);
   font-weight: 900;
 }
+.cookie-banner {
+  position: fixed;
+  left: 50%;
+  bottom: 18px;
+  z-index: 8500;
+  width: min(calc(100% - 32px), 920px);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 18px;
+  align-items: center;
+  padding: 18px;
+  border-radius: var(--radius);
+  background: #fff;
+  border: 1px solid var(--line);
+  border-bottom: 6px solid var(--orange);
+  box-shadow: 0 24px 80px rgba(17, 24, 39, 0.2);
+  transform: translate(-50%, 22px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.24s ease, transform 0.24s ease;
+}
+.cookie-banner.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(-50%, 0);
+}
+.cookie-banner p {
+  color: var(--ink);
+  font-size: 0.94rem;
+  line-height: 1.55;
+}
+.cookie-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.cookie-actions a {
+  color: var(--blue);
+  font-weight: 900;
+  white-space: nowrap;
+}
+.cookie-actions .btn {
+  min-height: 42px;
+  padding: 0 18px;
+}
 .modal-backdrop {
   position: fixed;
   inset: 0;
@@ -1891,6 +1936,23 @@ textarea { min-height: 122px; resize: vertical; }
   .faq-item summary {
     min-height: 76px;
     padding: 18px 48px 18px 18px;
+  }
+  .cookie-banner {
+    bottom: 12px;
+    grid-template-columns: 1fr;
+    gap: 14px;
+    padding: 16px;
+  }
+  .cookie-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+  }
+  .cookie-actions a {
+    grid-column: 1 / -1;
+  }
+  .cookie-actions .btn {
+    width: 100%;
   }
   .faq-answer p {
     padding: 0 18px 18px;

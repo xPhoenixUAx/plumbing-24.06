@@ -232,6 +232,38 @@
     });
   }
 
+  function initCookieBanner() {
+    const storageKey = "flowcoreCookieChoice";
+    if (localStorage.getItem(storageKey)) return;
+
+    const depth = window.location.pathname.includes("/services/") ? "../" : "";
+    const banner = document.createElement("div");
+    banner.className = "cookie-banner";
+    banner.setAttribute("role", "region");
+    banner.setAttribute("aria-label", "Cookie notice");
+    banner.innerHTML = `
+      <p>This site uses essential browser storage for interactive features and may use cookies or similar tools to improve request handling and measurement.</p>
+      <div class="cookie-actions">
+        <a href="${depth}cookie-policy.html">Cookie Policy</a>
+        <button class="btn outline-dark" type="button" data-cookie-choice="declined">Decline</button>
+        <button class="btn" type="button" data-cookie-choice="accepted">Accept</button>
+      </div>
+    `;
+    document.body.appendChild(banner);
+
+    requestAnimationFrame(() => {
+      banner.classList.add("is-visible");
+    });
+
+    banner.querySelectorAll("[data-cookie-choice]").forEach((button) => {
+      button.addEventListener("click", () => {
+        localStorage.setItem(storageKey, button.dataset.cookieChoice || "accepted");
+        banner.classList.remove("is-visible");
+        banner.addEventListener("transitionend", () => banner.remove(), { once: true });
+      });
+    });
+  }
+
   function showConfirmationModal(form) {
     const modal = document.querySelector("[data-confirmation-modal]");
     const fallback = form.querySelector(".success-message");
@@ -880,6 +912,7 @@
     initRouterDropdowns();
     initRouterContactFill();
     initFaq();
+    initCookieBanner();
     initPageTransitions();
     initParallax();
   });
